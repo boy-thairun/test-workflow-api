@@ -38,11 +38,11 @@ API คำนวณตำแหน่งด้วย fixed timestep คุมค
 
 ## Task Cards
 
-Paths และแต้มเป็นข้อเสนอ โครง runtime, DB migration และคำสั่ง test, lint, typecheck ให้ยืนยันพร้อม CONTRACT-010 ก่อนเริ่มการ์ด feature
+CONTRACT-010 กำหนดสคริปต์ใน `package.json` ให้ `test` รัน `vitest run`, `lint` รัน `eslint .`, `typecheck` รัน `tsc --noEmit` และใช้ `pnpm test`, `pnpm lint`, `pnpm typecheck` ตรวจงาน โครง runtime และแนวทาง DB migration ให้ยืนยันพร้อม CONTRACT-010 ก่อนเริ่มการ์ด Feature
 
 | การ์ด | ทำหลัง | Owned Paths | Acceptance Criteria |
 |---|---|---|---|
-| CONTRACT-010 กำหนดสัญญา v1 · Infra · 3 แต้ม | เริ่มได้ทันที | `packages/contracts/**`, `tests/contracts/**`, ไฟล์ตั้งค่าโปรเจกต์และ app entry point ของ API | ตรวจ schema และ fixtures ได้ใน CI และ consumer ทั้งสอง pin รุ่นเดียวกันได้ |
+| CONTRACT-010 กำหนดสัญญา v1 · Infra · 3 แต้ม | เริ่มได้ทันที | `packages/contracts/**`, `tests/contracts/**`, `src/app.ts`, `package.json`, `pnpm-lock.yaml`, `tsconfig.json`, `vitest.config.ts`, `eslint.config.mjs` | ตรวจ schema และ fixtures ได้ใน CI และ consumer ทั้งสอง pin รุ่นเดียวกันได้ |
 | AUTH-010 ยืนยันตัวตนและจัดการเซสชัน · Feature · 5 แต้ม | CONTRACT-010 | `src/auth/**`, `tests/auth/**`, `migrations/001-auth.*` | Login, me และ logout ผ่าน API integration test กับฐานข้อมูลทดสอบ เซสชันหมดอายุหรือถูกเพิกถอนใช้ต่อไม่ได้ |
 | ROOM-010 อ่านและบันทึกผังพื้นที่กลาง · Feature · 5 แต้ม | CONTRACT-010, AUTH-010 | `src/rooms/layout/**`, `tests/rooms/layout/**`, `migrations/002-rooms.*` | ทุกบัญชีอ่านผังชุดเดียวกัน เฉพาะแอดมินแก้ไขได้ ตรวจตำแหน่งและ revision ใน transaction และเผยแพร่ผังหลัง commit |
 | LIVE-010 ดูแลผู้เล่นและกระจายสถานะพื้นที่กลาง · Feature · 8 แต้ม | CONTRACT-010, AUTH-010, ROOM-010 | `src/rooms/live/**`, `tests/rooms/live/**` | ตรวจเซสชันตอนเชื่อมต่อและระหว่างเล่น ทุก connection เห็นผู้เล่นและผังชุดเดียวกันตาม tick และ revision |
@@ -51,6 +51,8 @@ Paths และแต้มเป็นข้อเสนอ โครง runtim
 **Must Not Modify** จำกัดการแก้ไขตาม Owned Paths ของการ์ด สัญญาที่ Frozen แล้วแก้ผ่านการ์ดสัญญาใหม่เท่านั้น แต่ละ feature ลงทะเบียน handler ผ่านขอบเขตที่ app entry point เตรียมไว้
 
 ### การ์ด ClickUp
+
+เปิด PR แผนจาก fork เข้า `develop` ของ upstream และอ้างลิงก์ในรายละเอียดการ์ด ช่อง `PR Link` ใช้กับ Draft PR สำหรับ RED ของการ์ดแต่ละใบหลังได้รับอนุมัติเป็น `ready`
 
 | Task Card | ClickUp |
 |---|---|
