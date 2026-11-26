@@ -1,0 +1,51 @@
+{
+  "width": 11,
+  "height": 8,
+  "spawn": {
+    "x": 5,
+    "y": 4
+  },
+  "obstacles": [
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 2,
+      "y": 1
+    },
+    {
+      "x": 8,
+      "y": 1
+    },
+    {
+      "x": 9,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 6
+    },
+    {
+      "x": 9,
+      "y": 6
+    }
+  ],
+  "catalog": [
+    {
+      "id": "chair",
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "table",
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": "plant",
+      "width": 1,
+      "height": 1
+    }
+  ]
+}

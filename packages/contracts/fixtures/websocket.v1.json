@@ -1,0 +1,84 @@
+{
+  "welcome": {
+    "type": "welcome",
+    "selfPlayerId": "player-1",
+    "tick": 0,
+    "players": [
+      {
+        "playerId": "player-1",
+        "displayName": "ผู้เล่น",
+        "x": 5,
+        "y": 4
+      }
+    ],
+    "layout": {
+      "revision": 0,
+      "placements": []
+    }
+  },
+  "input": {
+    "type": "input",
+    "seq": 1,
+    "dx": 1,
+    "dy": 0
+  },
+  "players": {
+    "type": "players",
+    "tick": 1,
+    "players": [
+      {
+        "playerId": "player-1",
+        "displayName": "ผู้เล่น",
+        "x": 5,
+        "y": 4
+      }
+    ]
+  },
+  "layout.updated": {
+    "type": "layout.updated",
+    "revision": 1,
+    "placements": [
+      {
+        "id": "placement-1",
+        "itemId": "chair",
+        "x": 3,
+        "y": 2
+      }
+    ]
+  },
+  "playersAfterLeave": {
+    "type": "players",
+    "tick": 2,
+    "players": []
+  },
+  "welcomeAfterReconnect": {
+    "type": "welcome",
+    "selfPlayerId": "player-2",
+    "tick": 3,
+    "players": [
+      {
+        "playerId": "player-2",
+        "displayName": "ผู้เล่น",
+        "x": 5,
+        "y": 4
+      }
+    ],
+    "layout": {
+      "revision": 1,
+      "placements": [
+        {
+          "id": "placement-1",
+          "itemId": "chair",
+          "x": 3,
+          "y": 2
+        }
+      ]
+    }
+  },
+  "invalidMovement": {
+    "type": "input",
+    "seq": 1,
+    "x": 4,
+    "y": 2
+  }
+}

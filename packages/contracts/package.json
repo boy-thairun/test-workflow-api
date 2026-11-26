@@ -1,0 +1,19 @@
+{
+  "name": "@test-workflow/virtual-room-contracts",
+  "version": "1.0.0",
+  "description": "Versioned REST, WebSocket, and room fixtures for Virtual Room",
+  "type": "module",
+  "files": [
+    "openapi.v1.json",
+    "websocket.v1.schema.json",
+    "room-definition.v1.json",
+    "fixtures"
+  ],
+  "exports": {
+    "./openapi": "./openapi.v1.json",
+    "./websocket": "./websocket.v1.schema.json",
+    "./room": "./room-definition.v1.json",
+    "./fixtures/rest": "./fixtures/rest.v1.json",
+    "./fixtures/websocket": "./fixtures/websocket.v1.json"
+  }
+}
