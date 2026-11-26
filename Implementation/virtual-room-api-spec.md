@@ -38,12 +38,18 @@ API คำนวณตำแหน่งด้วย fixed timestep คุมค
 
 ## Task Cards
 
+### สถานะงานจากการทดสอบในเครื่อง
+
+- CONTRACT-010 เตรียม OpenAPI, WebSocket schema, room definition และ fixtures เป็นแพ็กเกจ `@test-workflow/virtual-room-contracts` รุ่น `1.0.0` ให้ Web และ Web Admin อ้างอิง tarball จาก revision เดียวกันหลังรีวิวสัญญา
+- AUTH-010 ทดลอง login, me และ logout กับ SQLite บน Node 24 แล้ว การทดสอบในเครื่องใช้บัญชีชั่วคราวและฐานข้อมูลในหน่วยความจำ การตั้งค่า runtime และการต่อ `src/app.ts` เข้ากับ auth handler อยู่ในขอบเขตการ์ด AUTH-010
+- ROOM-010, LIVE-010 และ USER-010 ยังเป็นงาน API ตามลำดับ dependency ในตาราง
+
 CONTRACT-010 กำหนดสคริปต์ใน `package.json` ให้ `test` รัน `vitest run`, `lint` รัน `eslint .`, `typecheck` รัน `tsc --noEmit` และใช้ `pnpm test`, `pnpm lint`, `pnpm typecheck` ตรวจงาน โครง runtime และแนวทาง DB migration ให้ยืนยันพร้อม CONTRACT-010 ก่อนเริ่มการ์ด Feature
 
 | การ์ด | ทำหลัง | Owned Paths | Acceptance Criteria |
 |---|---|---|---|
-| CONTRACT-010 กำหนดสัญญา v1 · Infra · 3 แต้ม | เริ่มได้ทันที | `packages/contracts/**`, `tests/contracts/**`, `src/app.ts`, `package.json`, `pnpm-lock.yaml`, `tsconfig.json`, `vitest.config.ts`, `eslint.config.mjs` | ตรวจ schema และ fixtures ได้ใน CI และ consumer ทั้งสอง pin รุ่นเดียวกันได้ |
-| AUTH-010 ยืนยันตัวตนและจัดการเซสชัน · Feature · 5 แต้ม | CONTRACT-010 | `src/auth/**`, `tests/auth/**`, `migrations/001-auth.*` | Login, me และ logout ผ่าน API integration test กับฐานข้อมูลทดสอบ เซสชันหมดอายุหรือถูกเพิกถอนใช้ต่อไม่ได้ |
+| CONTRACT-010 กำหนดสัญญา v1 · Infra · 3 แต้ม | เริ่มได้ทันที | `packages/contracts/**`, `tests/contracts/**`, `package.json`, `pnpm-lock.yaml`, `tsconfig.json`, `vitest.config.ts`, `eslint.config.mjs`, `.github/workflows/verify-api.yml` | ตรวจ schema และ fixtures ได้ใน CI และ consumer ทั้งสอง pin รุ่นเดียวกันได้ |
+| AUTH-010 ยืนยันตัวตนและจัดการเซสชัน · Feature · 5 แต้ม | CONTRACT-010 | `src/app.ts`, `src/auth/**`, `tests/auth/**`, `migrations/001-auth.*`, สคริปต์ `dev` ใน `package.json` | Login, me และ logout ผ่าน API integration test กับฐานข้อมูลทดสอบ เซสชันหมดอายุหรือถูกเพิกถอนใช้ต่อไม่ได้ |
 | ROOM-010 อ่านและบันทึกผังพื้นที่กลาง · Feature · 5 แต้ม | CONTRACT-010, AUTH-010 | `src/rooms/layout/**`, `tests/rooms/layout/**`, `migrations/002-rooms.*` | ทุกบัญชีอ่านผังชุดเดียวกัน เฉพาะแอดมินแก้ไขได้ ตรวจตำแหน่งและ revision ใน transaction และเผยแพร่ผังหลัง commit |
 | LIVE-010 ดูแลผู้เล่นและกระจายสถานะพื้นที่กลาง · Feature · 8 แต้ม | CONTRACT-010, AUTH-010, ROOM-010 | `src/rooms/live/**`, `tests/rooms/live/**` | ตรวจเซสชันตอนเชื่อมต่อและระหว่างเล่น ทุก connection เห็นผู้เล่นและผังชุดเดียวกันตาม tick และ revision |
 | USER-010 อ่านผู้ใช้และแก้ชื่อ · Feature · 5 แต้ม | CONTRACT-010, AUTH-010 | `src/admin/users/**`, `tests/admin/users/**` | เฉพาะแอดมินเปิดรายการและแก้ชื่อได้ การอ่านรายการและ `GET /auth/me` ของบัญชีที่ถูกแก้สะท้อนชื่อใหม่ |

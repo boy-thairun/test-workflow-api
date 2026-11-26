@@ -1,0 +1,92 @@
+{
+  "loginRequest": {
+    "email": "player@example.test",
+    "password": "example-only"
+  },
+  "loginSuccess": {
+    "user": {
+      "id": "user-1",
+      "email": "player@example.test",
+      "displayName": "ผู้เล่น",
+      "role": "user"
+    }
+  },
+  "invalidCredentials": {
+    "error": {
+      "code": "INVALID_CREDENTIALS",
+      "message": "Invalid credentials"
+    }
+  },
+  "expiredSession": {
+    "error": {
+      "code": "UNAUTHENTICATED",
+      "message": "Session is missing or expired"
+    }
+  },
+  "emptyLayout": {
+    "revision": 0,
+    "placements": []
+  },
+  "saveLayoutRequest": {
+    "revision": 0,
+    "placements": [
+      {
+        "id": "placement-1",
+        "itemId": "chair",
+        "x": 3,
+        "y": 2
+      }
+    ]
+  },
+  "savedLayout": {
+    "revision": 1,
+    "placements": [
+      {
+        "id": "placement-1",
+        "itemId": "chair",
+        "x": 3,
+        "y": 2
+      }
+    ]
+  },
+  "staleLayout": {
+    "error": {
+      "code": "ROOM_REVISION_CONFLICT",
+      "message": "Room layout has changed"
+    }
+  },
+  "invalidPlacement": {
+    "error": {
+      "code": "VALIDATION_ERROR",
+      "message": "Placement is invalid"
+    }
+  },
+  "userPage": {
+    "items": [
+      {
+        "id": "user-1",
+        "email": "player@example.test",
+        "displayName": "ผู้เล่น",
+        "role": "user"
+      }
+    ],
+    "total": 1
+  },
+  "renameRequest": {
+    "displayName": "ชื่อใหม่"
+  },
+  "renamedUser": {
+    "user": {
+      "id": "user-1",
+      "email": "player@example.test",
+      "displayName": "ชื่อใหม่",
+      "role": "user"
+    }
+  },
+  "forbiddenRename": {
+    "error": {
+      "code": "FORBIDDEN",
+      "message": "Admin role required"
+    }
+  }
+}
